@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation (input)</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: stretch;
+            width: 300px;
+            height: 100px;
+            padding: 12px;
+            border: 3px solid rgb(66, 65, 65);
+        }
+
+        .button {
+
+            width: 70px;
+
+        }
+
+        .button-wrapper {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        #step2 {
+            display: none;
+
+        }
+
+        #step3 {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box" id="step1">
+            <input type="text" class="input-box" placeholder="Your Name" id="userName">
+            <div class="button-wrapper">
+                <button class="button" onclick="nameButtonClick()">Next </button>
+            </div>
+        </div>
+        <div class="box" id="step2">
+            <input type="text" class="input-box" placeholder="Your phone number" id="phoneNumber">
+            <div class="button-wrapper">
+                <button class="button" onclick="numberButtonClick()">Next </button>
+            </div>
+        </div>
+        <div class="box" id="step3">
+            <p id="thankYouText"></p>
+        </div>
+    </div>
+    </div>
+    <script>
+        var name = ""
+        var phoneNumber = ""
+
+        function nameButtonClick() {
+            name = document.getElementById("userName").value;
+            console.log(name);
+            if (name === "")
+                alert("enter value");
+            else {
+                document.getElementById("step1").style.display = "none";
+                document.getElementById("step2").style.display = "flex";
+            }
+        }
+
+        function numberButtonClick() {
+            phoneNumber = document.getElementById("phoneNumber").value;
+            console.log(phoneNumber);
+            if (phoneNumber === "")
+                alert("enter value");
+            else {
+                document.getElementById("step2").style.display = "none";
+                document.getElementById("step3").style.display = "flex";
+                document.getElementById("thankYouText").innerHTML = "Thank You " + name + ",<br> Your Number is " + phoneNumber
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
